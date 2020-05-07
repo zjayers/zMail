@@ -1,0 +1,42 @@
+<div class="field">
+  <label>{{label}}</label>
+  <input [type]="inputType" [formControl]="control" />
+
+  <!-- !ERROR HANDLING -->
+  <div *ngIf="checkForErrors()" class='pointing ui red basic label'>
+
+    <!-- !Value Required -->
+    <p *ngIf="control.errors.required">
+      Value is required
+    </p>
+
+    <!-- !Min Length Error -->
+    <p *ngIf="control.errors.minlength">
+      Value entered is {{control.errors.minlength.actualLength}} characters long,
+      but it must be at least {{control.errors.minlength.requiredLength}} characters.
+    </p>
+
+    <!-- !Max Length Error -->
+    <p *ngIf="control.errors.maxlength">
+      Value entered is {{control.errors.maxlength.actualLength}} characters long,
+      but it cannot be longer than {{control.errors.maxlength.requiredLength}} characters.
+    </p>
+
+    <!-- !Pattern Error -->
+    <p *ngIf="control.errors.pattern">
+      Invalid input
+    </p>
+
+    <!-- !Non Unique Username Error -->
+    <p *ngIf="control.errors.nonUniqueUsername">
+      Username is taken - Please choose another
+    </p>
+
+    <!-- !No Database Connection Error -->
+    <p *ngIf="control.errors.noDatabaseConnection">
+      Database connection unsuccessful - Please check your internet connection
+    </p>
+
+  </div>
+
+</div>
