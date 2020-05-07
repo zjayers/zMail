@@ -6,6 +6,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [InputComponent],
   imports: [CommonModule, ReactiveFormsModule],
-  exports: [InputComponent]
+  exports: [InputComponent],
 })
 export class SharedModule {}
