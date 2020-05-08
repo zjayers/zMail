@@ -10,7 +10,7 @@
           Sign Out
         </a>
       </ng-container>
-      <ng-container *ngIf="!(signedIn$ | async)">
+      <ng-container *ngIf="(signedIn$ | async) === false">
         <a
           class="ui item"
           routerLink="/"

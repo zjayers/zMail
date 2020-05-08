@@ -32,7 +32,7 @@ export class AuthService {
   constructor(private http: HttpClient) {}
 
   baseUrl = 'https://ayers-zmail.herokuapp.com/api/v1/auth';
-  signedIn$ = new BehaviorSubject(false); // Allow Other components to subscribe to data
+  signedIn$ = new BehaviorSubject(null); // Allow Other components to subscribe to data
 
   // USERNAME VALIDATION
   checkIfUsernameAvailable(username: string) {
@@ -74,23 +74,19 @@ export class AuthService {
 
   // SIGN OUT
   signOut() {
-    return this.http
-      .get<SignedInResponse>(this.baseUrl + '/signout')
-      .pipe(
-        tap(() => {
-          this.signedIn$.next(false);
-        })
-      );
+    return this.http.get<SignedInResponse>(this.baseUrl + '/signout').pipe(
+      tap(() => {
+        this.signedIn$.next(false);
+      })
+    );
   }
 
   // Check Authorization
   checkAuth() {
-    return this.http
-      .get<SignedInResponse>(this.baseUrl + '/isLoggedIn')
-      .pipe(
-        tap((response) => {
-          this.signedIn$.next(response.loggedIn);
-        })
-      );
+    return this.http.get<SignedInResponse>(this.baseUrl + '/isLoggedIn').pipe(
+      tap((response) => {
+        this.signedIn$.next(response.loggedIn);
+      })
+    );
   }
 }

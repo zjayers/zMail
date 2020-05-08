@@ -62,9 +62,9 @@ export class SignupComponent implements OnInit {
     }
 
     this.auth.signUp(this.authForm.value).subscribe({
-      next: (response) => {
+      next: () => {
         // Handle Successful Request
-        this.router.navigateByUrl('/');
+        this.router.navigateByUrl('/inbox');
       },
       error: (err) => {
         // Handle Errors
