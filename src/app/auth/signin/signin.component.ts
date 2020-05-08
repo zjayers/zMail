@@ -9,17 +9,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./signin.component.css'],
 })
 export class SigninComponent implements OnInit {
-
   authForm = new FormGroup({
-    username: new FormControl(
-      '',
-      [
-        Validators.required,
-        Validators.minLength(3),
-        Validators.maxLength(20),
-        Validators.pattern(/^[a-z0-9]+$/),
-      ],
-    ),
+    username: new FormControl('', [
+      Validators.required,
+      Validators.minLength(3),
+      Validators.maxLength(20),
+      Validators.pattern(/^[a-z0-9]+$/),
+    ]),
     password: new FormControl('', [
       Validators.required,
       Validators.minLength(8),
@@ -32,9 +28,7 @@ export class SigninComponent implements OnInit {
   ngOnInit(): void {}
 
   checkForErrors() {
-    return (
-      this.authForm.errors
-    );
+    return this.authForm.errors;
   }
 
   onFormSubmit(): void {
